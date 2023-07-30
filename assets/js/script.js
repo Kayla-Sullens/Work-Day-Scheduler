@@ -2,6 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+//Function for save button
 $(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -13,7 +14,67 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
- 
+  var Text;
+  var Time; 
+  
+  $(".saveBtn").click(function () {
+
+    Text = $(this).siblings(".time-block").val();
+    Time = $(this).parent().attr("id");
+    
+    localStorage.setItem(time, JSON.stringify(text));
+
+    renderText ();
+  });
+
+  function renderText () {
+    var saveText9 = JSON.parse(localStorage.getItem("9am"));
+    $("#hour-9").val("");
+    $("#hour-9").val(saveText9);
+
+    var saveText10 = JSON.parse(localStorage.getItem("10am"));
+    $("#hour-10").val("");
+    $("#hour-10").val(saveText10);
+
+    var saveText11 = JSON.parse(localStorage.getItem("11am"));
+    $("#hour-11").val("");
+    $("#hour-11").val(saveText11);
+
+    var saveText12 = JSON.parse(localStorage.getItem("12pm"));
+    $("#hour-12").val("");
+    $("#hour-12").val(saveText12);
+
+    var saveText13 = JSON.parse(localStorage.getItem("1pm"));
+    $("#hour-13").val("");
+    $("#hour-13").val(saveText13);
+
+    var saveText14 = JSON.parse(localStorage.getItem("2pm"));
+    $("#hour-14").val("");
+    $("#hour-14").val(saveText14);
+
+    var saveText15 = JSON.parse(localStorage.getItem("3pm"));
+    $("#hour-15").val("");
+    $("#hour-15").val(saveText15);
+
+    var saveText16 = JSON.parse(localStorage.getItem("4pm"));
+    $("#hour-16").val("");
+    $("#hour-16").val(saveText16);
+
+    var saveText17 = JSON.parse(localStorage.getItem("5pm"));
+    $("#hour-17").val("");
+    $("#hour-17").val(saveText17);
+  };
+
+  //$("#hour-9 .time-block").val(localStorage.getItem("hour-9"));
+  //$("#hour-10 .time-block").val(localStorage.getItem("hour-10"));
+  //$("#hour-11 .time-block").val(localStorage.getItem("hour-11"));
+ // $("#hour-12 .time-block").val(localStorage.getItem("hour-12"));
+ // $("#hour-13 .time-block").val(localStorage.getItem("hour-13"));
+  //$("#hour-14 .time-block").val(localStorage.getItem("hour-14"));
+  //$("#hour-15 .time-block").val(localStorage.getItem("hour-15"));
+  //$("#hour-16 .time-block").val(localStorage.getItem("hour-16"));
+ // $("#hour-17 .time-block").val(localStorage.getItem("hour-17"));
+
 });
 
 
@@ -40,20 +101,7 @@ hours.forEach((hour, i) => {
   `;
 });
 
-//Function for save button
-$(".saveBtn").on("click", function () {
-  var text = $(this).siblings(".decription").val();
-  var time = $(this).parent().attr("id");
-  localStorage.setItem(time, text);
-});
+
+
 
 //Retrieve what's entered and puts them in the correct time block/place
-$("#hour-9 .desciption").val(localStorage.getItem("hour-9"));
-$("#hour-10 .description").val(localStorage.getItem("hour-10"));
-$("#hour-11 .description").val(localStorage.getItem("hour-11"));
-$("#hour-12 .description").val(localStorage.getItem("hour-12"));
-$("#hour-13 .description").val(localStorage.getItem("hour-13"));
-$("#hour-14 .description").val(localStorage.getItem("hour-14"));
-$("#hour-15 .description").val(localStorage.getItem("hour-15"));
-$("#hour-16 .description").val(localStorage.getItem("hour-16"));
-$("#hour-17 .description").val(localStorage.getItem("hour-17"));
