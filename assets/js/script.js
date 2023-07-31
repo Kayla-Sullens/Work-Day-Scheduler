@@ -19,8 +19,8 @@ $(function () {
   
   $(".saveBtn").click(function () {
 
-    Text = $(this).siblings(".time-block").val();
-    Time = $(this).parent().attr("id");
+    Text = $(this).siblings(".description").val();
+    Time = $(this).siblings(".hour");
     
     localStorage.setItem(time, JSON.stringify(text));
 
