@@ -4,6 +4,29 @@
 
 //Function for save button
 $(function () {
+  const main = document.getElementById('main');
+  const currentDay = document.getElementById("currentDay");
+  const hours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
+
+  currentDay.innerHTML = dayjs().format('ddd, MMM DD YYYY @ hh:mm a');
+
+  // main.innerHTML = '';
+
+  // hours.forEach((hour, i) => {
+  //   let rH = i + 9;
+  //   let cH = dayjs().format('H');
+
+  //   main.innerHTML += `
+  //   <div id="hour-9" class="row time-block ${rH > cH ? 'future' : rH < cH ? 'past' : 'present'}">
+  //     <div class="col-2 col-md-1 hour text-center py-3">${hour}</div>
+  //     <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
+  //     <button class="btn saveBtn col-2 col-md-1" aria-label="save">
+  //       <i class="fas fa-save" aria-hidden="true"></i>
+  //     </button>
+  //   </div>
+  // `;
+  });
+
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -14,23 +37,22 @@ $(function () {
   // TODO: Add code to get any user input that was saved in localStorage and set
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
-  var Text;
-  var Time; 
-  
+
+
   $(".saveBtn").click(function () {
 
-    Text = $(this).siblings(".description").val();
-    Time = $(this).siblings(".hour");
-    
+    var text = $(this).siblings(".description").val();
+    var time = $(this).siblings(".hour").text();
+    console.log(time);
+
     localStorage.setItem(time, JSON.stringify(text));
 
-    renderText ();
   });
 
-  function renderText () {
+  function renderText() {
     var saveText9 = JSON.parse(localStorage.getItem("9am"));
-    $("#hour-9").val("");
-    $("#hour-9").val(saveText9);
+    $("#hour-9 .description").val("");
+    $("#hour-9 .description").val(saveText9);
 
     var saveText10 = JSON.parse(localStorage.getItem("10am"));
     $("#hour-10").val("");
@@ -65,41 +87,12 @@ $(function () {
     $("#hour-17").val(saveText17);
   };
 
-  //$("#hour-9 .time-block").val(localStorage.getItem("hour-9"));
-  //$("#hour-10 .time-block").val(localStorage.getItem("hour-10"));
-  //$("#hour-11 .time-block").val(localStorage.getItem("hour-11"));
- // $("#hour-12 .time-block").val(localStorage.getItem("hour-12"));
- // $("#hour-13 .time-block").val(localStorage.getItem("hour-13"));
-  //$("#hour-14 .time-block").val(localStorage.getItem("hour-14"));
-  //$("#hour-15 .time-block").val(localStorage.getItem("hour-15"));
-  //$("#hour-16 .time-block").val(localStorage.getItem("hour-16"));
- // $("#hour-17 .time-block").val(localStorage.getItem("hour-17"));
+  renderText();
 
 });
 
 
-const main = document.getElementById('main');
-const currentDay = document.getElementById("currentDay");
-const hours = ["9am", "10am", "11am", "12pm", "1pm", "2pm", "3pm", "4pm", "5pm"];
 
-currentDay.innerHTML = dayjs().format('ddd, MMM DD YYYY @ hh:mm a');
-
-main.innerHTML = '';
-
-hours.forEach((hour, i) => {
-  let rH = i + 9;
-  let cH = dayjs().format('H');
-
-  main.innerHTML += `
-    <div id="hour-9" class="row time-block ${rH > cH ? 'future' : rH < cH ? 'past' : 'present'}">
-      <div class="col-2 col-md-1 hour text-center py-3">${hour}</div>
-      <textarea class="col-8 col-md-10 description" rows="3"> </textarea>
-      <button class="btn saveBtn col-2 col-md-1" aria-label="save">
-        <i class="fas fa-save" aria-hidden="true"></i>
-      </button>
-    </div>
-  `;
-});
 
 
 
