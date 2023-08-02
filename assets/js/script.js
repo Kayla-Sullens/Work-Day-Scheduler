@@ -13,7 +13,12 @@ const init = function() {
     let cH = parseInt(dayjs().format('H'));
     console.log(typeof rH);
     console.log(typeof cH);
+
     var row = $('#hour-' + rH);
+    var localStorageValue = localStorage.getItem('hour-' + rH);
+    if(localStorageValue) {
+      row.children('textarea').val(localStorageValue);
+    }
 
     if (cH < rH) {
       row.addClass('future');
@@ -30,6 +35,8 @@ const init = function() {
     var hour = btn.parent().attr('id');
     
     localStorage.setItem(hour, value);
+
+    
     
   });
 };
