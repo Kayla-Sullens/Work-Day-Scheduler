@@ -23,15 +23,14 @@ const init = function() {
       row.addClass('present');
     }
   });
-  
+
   $('.saveBtn').on('click', function () {
-    console.log('Hello');
-    // let store = [];
-    // document.querySelectorAll('textarea').forEach((area,i)=> store.push(area.value));
-  
-    // localStorage.hours = JSON.stringify(store)
-    // localStorage.setItem('textarea', 'text')
-    // localStorage.getItem('textarea');
+    var btn = $(this);
+    var value = btn.siblings('textarea').val();
+    var hour = btn.parent().attr('id');
+    
+    localStorage.setItem(hour, value);
+    
   });
 };
 
