@@ -7,6 +7,7 @@ For this challenge assignment, we were given starter code for a work-day schedul
 
 ## Link
 
-
+https://kayla-sullens.github.io/Work-Day-Scheduler/
 
 ## Screenshot
+<img width="1167" alt="Work-Day-Scheduler Screenshot" src="https://github.com/Kayla-Sullens/Work-Day-Scheduler/assets/134717855/eda29199-9541-417b-895d-85f290df6b59">
